@@ -9,3 +9,4 @@ João Antônio Nardini <br />
 João Batista <br />
 
 # Links externos:
+Trello -> https://trello.com/b/yfSFkf0h/sprint1-sprint-1-📦-08-12-21-16-12-21-yourpizza
