@@ -1,0 +1,50 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+tbody > tr:nth-child(even){
+background-color: rgb(250, 205, 120);
+}
+tbody > tr:nth-child(odd){
+    background-color: rgb(247, 160, 0);
+    }
+tbody >tr{
+    color: white;
+    text-transform: capitalize;
+    font-weight: bolder;
+    
+}
+
+tbody tr td a{
+    text-decoration: none;
+    color: white;
+    background-color: red;
+    box-sizing: border-box;
+    padding: 5px;
+    cursor: pointer;
+}
+tbody tr td a:hover{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(133, 4, 4);
+    box-sizing: border-box;
+    padding: 5px;
+    cursor: pointer;
+}
+
+tbody tr td #mudarstatusbtn{
+    text-decoration: none;
+    color: white;
+    background-color: rgb(255, 2, 2);
+    box-sizing: border-box;
+    padding: 5px;
+    cursor: pointer;
+}
+#numero_pedidos_comprados{
+    text-transform: capitalize;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 18px;
+    background-color:  rgb(247, 160, 0);
+ color: white;
+}
