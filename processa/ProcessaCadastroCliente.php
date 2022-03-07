@@ -11,8 +11,12 @@ $bairro=$_POST["bairro"];
 $numero_casa=$_POST["numero_casa"];
 $telefone=$_POST["telefone"];
 $c=new Cliente($nome,$sobrenome,$email,$senha,$cep,$cidade,$bairro,$numero_casa,$telefone);
-$c->cadastrar();
+if($c->cadastrar()){
+    print "<h1> Novo cliente cadastrado com sucesso!</h1>";
+}else{
+    print "<h1>falha ao cadastrar o cliente <h1>";
 
+}
 }
 
 ?>

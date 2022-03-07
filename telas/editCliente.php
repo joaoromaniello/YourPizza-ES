@@ -69,7 +69,7 @@ if(! isset($_SESSION["logado_cliente"])){
     <h1>Editar cliente</h1>
 
     
-    <form action="../processa/processaEditCliente.php?id=<?php $id ?>" method="POST">
+    <form action="../processa/processaEditCliente.php?id=<?php echo $id ?>" method="POST">
 
         <div class="row">
             <div class="col-md-6">

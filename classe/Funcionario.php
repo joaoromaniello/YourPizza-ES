@@ -38,7 +38,6 @@ class Funcionario extends Pessoa
             //if(!empty($this->getNome()) && (!empty($this->getSobrenome())) && (!empty($this->getEmail())) && (!empty($this->getSenha())) && (!empty($this->getCep())) && (!empty($this->getCidade())) && (!empty($this->getBairro())) && (!empty($this->getNumeroCasa())) (!empty($this->getTelefone()))){
             if ($stmt->execute(array($this->getNome(), $this->getSobrenome(), $this->getEmail(), $this->password_hash_client, $this->getCep(), $this->getCidade(), $this->getBairro(), $this->getNumeroCasa(), $this->getTelefone()))) {
                 $localId = $con->pdo->lastInsertId();
-                print("meu id " . $localId);
                 $sql2 = "INSERT INTO funcionario(idpessoa,cargo,salario) VALUES (?,?,?)";
                 $query = $con->pdo->prepare($sql2);
                 if($query->execute(array($localId, $this->getCargo(), $this->getSalario()))){
@@ -97,15 +96,16 @@ class Funcionario extends Pessoa
             }
         }
     }
-    public function editar($nome, $sobrenome, $email, $cep, $cidade, $bairro, $numerocasa, $telefone, $cargo, $salario){
+    public function editar($nome, $sobrenome, $email, $cep, $cidade, $bairro, $numerocasa, $telefone, $cargo, $salario,$id){
         $con=new Connection();
 
         $sql ="UPDATE funcionario JOIN pessoa ON funcionario.idpessoa=pessoa.idpessoa
         SET pessoa.nome=?,pessoa.sobrenome=?, pessoa.email=?,pessoa.cep=?,pessoa.cidade=?,pessoa.bairro=?,pessoa.numerocasa=?,pessoa.telefone=?,funcionario.cargo=?,funcionario.salario=?
         WHERE 
-        funcionario.idpessoa=pessoa.idpessoa";
+        funcionario.idpessoa=?
+        limit 1";
         $prepare=$con->pdo->prepare($sql);
-        if($prepare->execute(array($nome,$sobrenome,$email,$cep,$cidade,$bairro,$numerocasa,$telefone,$cargo,$salario))){
+        if($prepare->execute(array($nome,$sobrenome,$email,$cep,$cidade,$bairro,$numerocasa,$telefone,$cargo,$salario,$id))){
             return true;
         }else{
             return false;

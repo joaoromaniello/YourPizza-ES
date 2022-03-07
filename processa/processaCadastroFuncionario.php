@@ -12,9 +12,9 @@ $numero_casa=$_POST["numero_casa"];
 $telefone=$_POST["telefone"];
 $cargo =$_POST["cargo"];
 $salario=$_POST["salario"];
-print $nome . " ".$sobrenome . " ".$email . " ". $senha . " ". $cep . " ". $cidade . " ". $bairro . " ". $numero_casa . " ". $telefone. " ". $cargo . " ". $salario . " ";
 $f=new Funcionario($nome,$sobrenome,$email,$senha,$cep,$cidade,$bairro,$numero_casa,$telefone,$cargo,$salario);
-$f->cadastrar();
-
+    if($f->cadastrar()){
+        print "<h1>Novo Funcionario cadastrado com sucesso</h1>";
+    }
 }
 ?>
