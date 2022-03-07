@@ -5,5 +5,9 @@ if(isset($_POST["btn_cadastrar_complemento"])){
     $qtdcomplemento=$_POST["qtdcomplemento"];
 
    $complemento=new Complemento($nome,$qtdcomplemento);
-   $complemento->cadastrar();
+if (   $complemento->cadastrar()) {
+        print "<h1> novo complemento cadastrado com sucesso</h1>";
+}else{
+    print "<h1>nao foi possivel cadastrar este novo complemento</h1>";
+}
 }

@@ -17,7 +17,7 @@ $telefone=$_POST["telefone"];
 
 $c=new Cliente(null,null,null,null,null,null,null,null,null,null,null);
 
-if($c->editar($nome,$sobrenome,$email,$cep,$cidade,$bairro,$numero_casa,$telefone)){
+if($c->editar($nome,$sobrenome,$email,$cep,$cidade,$bairro,$numero_casa,$telefone,$id)){
 echo "<h1>atualização efutuada com sucesso !</h1>";
     echo "<a href='../telas/AdiminCliente.php'>Voltar para tela inicial do cliente</a>";
 

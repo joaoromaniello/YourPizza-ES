@@ -30,10 +30,9 @@ if(! isset($_SESSION["logado_gerente"])){
     $func=new Funcionario(null,null,null,null,null,null,null,null,null,null,null);
     $f=$func->busca_especifica($id);
     $funcionario=$f->fetch(PDO::FETCH_ASSOC);
-    var_dump($funcionario['nome']);
     ?>
     <h1>Editar Funcionario</h1>
-    <form action="../processa/processaedit.php?id=<?php $id ?>" method="POST">
+    <form action="../processa/processaedit.php?id=<?php echo $id ?>" method="POST">
 
         <div class="row">
             <div class="col-md-6">

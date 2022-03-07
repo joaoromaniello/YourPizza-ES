@@ -70,8 +70,13 @@ if( !(isset($_SESSION["logado_funcionario"])) && !isset($_SESSION["logado_gerent
                     <td><?php echo $p['stutusPedido']; ?></td>
                     <td><?php echo $p['data_hora']; ?></td>
                     <td><?php echo $p['preco']; ?></td>
-                     <td><button  class="btn btn" data-bs-toggle="modal" data-bs-target="#mudarStatus"  name="btnmodal" id="mudarstatusbtn">Mudar Status Pedido</button></td>
+                      <?php if($p["stutusPedido"] !="cancelar"){?>
+                    <td><button  class="btn btn" data-bs-toggle="modal" data-bs-target="#mudarStatus"  name="btnmodal" id="mudarstatusbtn">Mudar Status Pedido</button></td>
+                    <?php }else{ ?>
+                      <td><p> é possivel alterar esse status pois o cliente cancelou</p></td>
+                      <?php } ?>
                 </tr>
+
                 <div class="modal fade" id="mudarStatus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -91,7 +96,7 @@ if( !(isset($_SESSION["logado_funcionario"])) && !isset($_SESSION["logado_gerent
 
           </div>
   
-          <button type="submit" class="btn btn-primary" name="mudar_status">mudar status</button>
+          <button type="submit" class="btn btn-danger" name="mudar_status">mudar status</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
         </form>

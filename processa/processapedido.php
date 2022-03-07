@@ -20,7 +20,6 @@ if(isset($_POST["btnPedido"])&& isset($_SESSION["logado_cliente"])){
         $descricao=$_POST["descricao"];
         $borda=$_POST["borda"];
         $valor_pagar=$_POST["valor_pagar"];
-        print $valor_pagar;
  
         $pizza=new Pizza($nome,$descricao,$borda,$tamanho);
         $codPizza=$pizza->cadastrar();
@@ -34,7 +33,9 @@ if(isset($_POST["btnPedido"])&& isset($_SESSION["logado_cliente"])){
 
 
     }
-    $novoPedido->cadastrar();
+    if( $novoPedido->cadastrar()){
+         print "<h1>Seu pedido foi realizado por favor, aguarde o recebimento muito obrigado pela preferencia</h1>";
+   }
     echo"<a href='../telas/AdiminCliente.php'>Voltar para tela inicial do cliente</a>";
 
 

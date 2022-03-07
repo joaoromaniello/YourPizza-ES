@@ -94,7 +94,7 @@ $verificaSN=0;
     </thead>
     <tbody>
       <?php while ($p = $lp->fetch(PDO::FETCH_ASSOC)) { ?>
-
+    
         <tr>
           <td><?php echo $p['titulo']; ?></td>
           <td><?php echo $p['descricao']; ?></td>
@@ -108,11 +108,13 @@ $verificaSN=0;
           <td><?php echo $p['stutusPedido']; ?></td>
           <td><?php echo $p['data_hora']; ?></td>
           <td><?php echo $p['preco']; ?></td>
-          <?php if ($p['stutusPedido'] == 'concluido' || $p['stutusPedido'] == 'cancelar' )  {  ?>
-            <td>nao podemos alterar status de pedidos cancelados/concluidos</td>
-           <?php }  else{?>
+          <?php if ($p['stutusPedido'] =='com entregrador' || $p['stutusPedido'] =='concluido'  || $p['stutusPedido'] =='preparando' ||  $p['stutusPedido'] =='cancelar' )  {?>
+            <td>nao podemos alterar status de pedidos em andamento eou/cancelados/concluidos</td>
+            <?php } else { ?>
+         
             <td><button class="btn" data-bs-toggle="modal" data-bs-target="#mudarStatus" name="btnmodal" id="mudarstatusbtn">Mudar Status Pedido</button></td>
- <?php }?>
+            
+ 
             
   <div class="modal fade" id="mudarStatus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -122,7 +124,7 @@ $verificaSN=0;
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="editarStatusPedidoscliente.php?id=<?php echo $p['idpedido']; ?>" method="POST">
+          <form action="editarStatusPedidoscliente.php?id=<?php  echo $p['idpedido'];?>" method="POST">
             <div class="mb-3">
               <label for="changeStatus" class="col-form-label">Mudar Status</label>
               <select class="form-control" id="changeStatus" name="changeStatus">
@@ -141,7 +143,8 @@ $verificaSN=0;
       </div>
     </div>
   </div>
-   <?php    ?>   
+  <?php } ?>
+   
 
 
           <?php if ($p['stutusPedido'] == 'concluido') { ?>

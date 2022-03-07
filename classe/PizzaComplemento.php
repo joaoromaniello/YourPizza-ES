@@ -33,7 +33,6 @@ class PizzaComplemento{
         $sql="INSERT INTO pizzacomplemento (idcomplemento,idproduto) Values (?,?)";
         $prepare=$conn->pdo->prepare($sql);
         if($prepare->execute(array($this->getIdComplemento(),$this->getIdPizza()))){
-            print "<h1>sucesso</h1>";
         }
     }
 }

@@ -16,8 +16,7 @@ public function cadastrar()
         //if(!empty($this->getNome()) && (!empty($this->getSobrenome())) && (!empty($this->getEmail())) && (!empty($this->getSenha())) && (!empty($this->getCep())) && (!empty($this->getCidade())) && (!empty($this->getBairro())) && (!empty($this->getNumeroCasa())) (!empty($this->getTelefone()))){
             if($stmt->execute(array($this->getNome(),$this->getSobrenome(),$this->getEmail(),$this->password_hash_client,$this->getCep(),$this->getCidade(),$this->getBairro(),$this->getNumeroCasa(),$this->getTelefone()))){
               $localId=$con->pdo->lastInsertId();
-              print("meu id " .$localId);
-              $sql2="INSERT INTO cliente(idpessoa) VALUES (?)";
+            $sql2="INSERT INTO cliente(idpessoa) VALUES (?)";
               $query=$con->pdo->prepare($sql2);
         if(      $query->execute(array($localId))){
         
@@ -40,15 +39,16 @@ public function cadastrar()
     }
 
   }   
-  public function editar($nome, $sobrenome, $email, $cep, $cidade, $bairro, $numerocasa, $telefone){
+  public function editar($nome, $sobrenome, $email, $cep, $cidade, $bairro, $numerocasa, $telefone,$id){
     $con=new Connection();
 
     $sql ="UPDATE cliente JOIN pessoa ON cliente.idpessoa =pessoa.idpessoa
     set pessoa.nome=?,pessoa.sobrenome=?,pessoa.email=?,pessoa.cep=?,pessoa.cidade=?,pessoa.bairro=?,pessoa.numerocasa=?,pessoa.telefone=?
     WHERE
-    pessoa.idpessoa=cliente.idpessoa";
+    pessoa.idpessoa=?
+    LIMIT 1";
     $prepare=$con->pdo->prepare($sql);
-   if($prepare->execute(array($nome,$sobrenome,$email, $cep, $cidade, $bairro, $numerocasa, $telefone))){
+   if($prepare->execute(array($nome,$sobrenome,$email, $cep, $cidade, $bairro, $numerocasa, $telefone,$id))){
        return true;
        
    }

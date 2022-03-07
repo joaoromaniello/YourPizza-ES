@@ -12,5 +12,9 @@ $telefone=$_POST["telefone"];
 $cargo =$_POST["cargo"];
 $salario=$_POST["salario"];
 $func=new Funcionario(null,null,null,null,null,null,null,null,null,null,null);
+if(
+    $func->editar($nome,$sobrenome,$email,$cep,$cidade,$bairro,$numero_casa,$telefone,$cargo,$salario,$id)){
+        print "<h1> informações do funcionario atualizadas Com sucesso!. </h1>";
+    }else{
 
-$func->editar($nome,$sobrenome,$email,$cep,$cidade,$bairro,$numero_casa,$telefone,$cargo,$salario);
+    }
